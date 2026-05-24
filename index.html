@@ -414,7 +414,7 @@
     <div class="nav-logo">BETPROFIT PRO+</div>
     <div class="nav-right">
         <button class="nav-lang" onclick="toggleLang()" id="lang-btn">RO</button>
-        <a href="https://betprofit.uk/app" class="nav-cta" data-t="navCta">Open App</a>
+        <a href="https://app.betprofit.uk" class="nav-cta" data-t="navCta">Open App</a>
     </div>
 </nav>
 
@@ -468,7 +468,7 @@
                 <span class="live-dot"></span>
                 <span data-t="heroPreviewTitle">Top AI Picks — Right Now</span>
             </div>
-            <a href="https://betprofit.uk/app" class="hero-preview-link" data-t="heroPreviewLink">See all →</a>
+            <a href="https://app.betprofit.uk" class="hero-preview-link" data-t="heroPreviewLink">See all →</a>
         </div>
         <div id="hero-preview-list">
             <div class="hero-preview-empty" data-t="heroPreviewLoading">Loading top picks…</div>
@@ -477,7 +477,7 @@
 
     <!-- CTA buttons (moved lower) -->
     <div class="hero-cta-wrap">
-        <a href="https://betprofit.uk/app" class="hero-cta">
+        <a href="https://app.betprofit.uk" class="hero-cta">
             <span data-t="heroCta">Start Free Now</span>
             <span>&#10132;</span>
         </a>
@@ -587,7 +587,7 @@
                     <li class="disabled"><span class="x">&times;</span> <span data-t="pf6">Daily ticket generator</span></li>
                     <li><span class="x">&times;</span> <span data-t="pf7">Contains ads</span></li>
                 </ul>
-                <a href="https://betprofit.uk/app" class="price-btn primary" data-t="priceCtaFree">Start Free Now</a>
+                <a href="https://app.betprofit.uk" class="price-btn primary" data-t="priceCtaFree">Start Free Now</a>
             </div>
             <!-- PRO -->
             <div class="price-card featured">
@@ -608,7 +608,7 @@
                     <li><span class="check">&#10003;</span> <span data-t="pp6">All 200+ leagues unlocked</span></li>
                     <li><span class="check">&#10003;</span> <span data-t="pp7">Priority updates &amp; early access</span></li>
                 </ul>
-                <a href="https://betprofit.uk/app" class="price-btn pro" data-t="priceCtaPro">Get Pro →</a>
+                <a href="https://app.betprofit.uk" class="price-btn pro" data-t="priceCtaPro">Get Pro →</a>
             </div>
         </div>
     </div>
@@ -618,7 +618,7 @@
 <section class="final-cta">
     <h2 data-t="finalTitle">Ready to Bet Smarter?</h2>
     <p data-t="finalSub">Join thousands using AI to find value in every match.</p>
-    <a href="https://betprofit.uk/app" class="hero-cta">
+    <a href="https://app.betprofit.uk" class="hero-cta">
         <span data-t="finalCta">Open BetProfit — It's Free</span>
         <span>&#10132;</span>
     </a>
@@ -751,9 +751,9 @@ function setBilling(mode) {
 async function loadStats() {
     try {
         const [prematchRes, liveRes, statsRes] = await Promise.all([
-            fetch('https://betprofit.uk/api/matches/prematch').then(r => r.json()).catch(() => []),
-            fetch('https://betprofit.uk/api/matches').then(r => r.json()).catch(() => []),
-            fetch('https://betprofit.uk/api/portfolio/stats').then(r => r.json()).catch(() => ({}))
+            fetch('https://app.betprofit.uk/api/matches/prematch').then(r => r.json()).catch(() => []),
+            fetch('https://app.betprofit.uk/api/matches').then(r => r.json()).catch(() => []),
+            fetch('https://app.betprofit.uk/api/portfolio/stats').then(r => r.json()).catch(() => ({}))
         ]);
         const prematchCount = Array.isArray(prematchRes) ? prematchRes.length : 0;
         const liveCount     = Array.isArray(liveRes) ? liveRes.length : 0;
