@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff9d"/>
+      <stop offset="100%" style="stop-color:#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <text x="256" y="200" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="900" font-size="120" fill="url(#accent)">BP</text>
+  <text x="256" y="310" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="800" font-size="48" fill="#ffffff" opacity="0.9">PRO+</text>
+  <line x1="120" y1="340" x2="392" y2="340" stroke="url(#accent)" stroke-width="3" opacity="0.4"/>
+  <text x="256" y="400" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-weight="700" font-size="36" fill="#00ff9d" opacity="0.7">AI BETTING</text>
+</svg>
