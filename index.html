@@ -779,16 +779,17 @@ function renderHeroPreview(prematch) {
     if (!list) return;
     const t = translations[currentLang];
 
-    // Pick top 3 matches with high-confidence bets (≥70%)
+    // Pick top 3 highest-confidence bets (minimum 55%, sorted by confidence desc)
     const picks = [];
-    const sorted = [...(prematch || [])];
-    // Sort all matches by best bet confidence desc, then EV desc
-    for (const m of sorted) {
+    for (const m of (prematch || [])) {
         const bets = m.value_bets || [];
-        const best = bets.filter(b => b && b.p >= 70).sort((a,b) => (b.p||0) - (a.p||0) || (b.ev||0) - (a.ev||0))[0];
+        // Best bet for this match = highest confidence (must be ≥55% to show at all)
+        const best = bets
+            .filter(b => b && b.p >= 55)
+            .sort((a,b) => (b.p||0) - (a.p||0))[0];
         if (best) picks.push({ match: m, bet: best });
     }
-    // Sort picks by confidence desc and take top 3
+    // Sort all collected picks by confidence desc, keep top 3
     picks.sort((a,b) => (b.bet.p||0) - (a.bet.p||0));
     picks.splice(3);
 
