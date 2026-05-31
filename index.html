@@ -578,6 +578,38 @@
     </div>
 </section>
 
+<!-- ═══ VERIFIED RESULTS ═══ -->
+<section id="results">
+    <div class="container">
+        <h2 class="section-title" data-t="resTitle">Verified Results — No Cherry-Picking</h2>
+        <p class="section-sub" data-t="resSub">Every settled pick counted — wins <em>and</em> losses. Updated live from the engine.</p>
+        <div class="hero-proof" style="max-width:760px;margin:30px auto 0;">
+            <div class="hero-proof-item">
+                <div class="hero-proof-num" id="tr-roi" style="color:var(--accent);">+11%</div>
+                <div class="hero-proof-label">ROI</div>
+            </div>
+            <div class="hero-proof-item">
+                <div class="hero-proof-num" id="tr-winrate">58%</div>
+                <div class="hero-proof-label" data-t="resWin">Win Rate</div>
+            </div>
+            <div class="hero-proof-item">
+                <div class="hero-proof-num" id="tr-bets">370+</div>
+                <div class="hero-proof-label" data-t="resBets">Settled Bets</div>
+            </div>
+            <div class="hero-proof-item">
+                <div class="hero-proof-num" id="tr-profit" style="color:var(--accent);">+1800u</div>
+                <div class="hero-proof-label" data-t="resProfit">Profit</div>
+            </div>
+        </div>
+        <p class="section-sub" style="font-size:13px;opacity:0.6;margin-top:18px;" data-t="resNote">
+            Based on the official AI Top Picks (prob ≥ 55%, odds ≥ 1.45). Past performance is not a guarantee of future results.
+        </p>
+        <div class="hero-cta-wrap" style="text-align:center;margin-top:22px;">
+            <a href="https://app.betprofit.uk/?tab=trackrecord" class="hero-cta" data-t="resCta">See the full live track record →</a>
+        </div>
+    </div>
+</section>
+
 <!-- ═══ PRICING ═══ -->
 <section id="pricing">
     <div class="container">
@@ -803,6 +835,22 @@ async function loadStats() {
         // Hero preview list — top 3 prematch picks by EV
         renderHeroPreview(prematchRes);
     } catch(e) { console.warn('loadStats failed', e); }
+    loadTrackRecord();
+}
+
+// ── Verified track record (live; static fallback keeps the section credible if engine offline) ──
+async function loadTrackRecord() {
+    const setIf = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    try {
+        const d = await fetch('https://app.betprofit.uk/api/track-record').then(r => r.json());
+        const s = d && d.summary;
+        if (s && (s.total_bets || 0) > 0) {
+            setIf('tr-roi', (s.roi >= 0 ? '+' : '') + (s.roi || 0) + '%');
+            setIf('tr-winrate', (s.win_rate || 0) + '%');
+            setIf('tr-bets', (s.total_bets || 0).toLocaleString());
+            setIf('tr-profit', (s.profit >= 0 ? '+' : '') + Math.round(s.profit || 0) + 'u');
+        }
+    } catch (e) { /* keep static fallback numbers already in the HTML */ }
 }
 
 function renderHeroPreview(prematch) {
